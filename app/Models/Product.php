@@ -9,6 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'provider', 'price', 'manufacturing_date', 'expiration_date'];
+
     //tem como fazer como getPriceFormatedAtrribute, e la na view mudar pra price_formated MAS VOU DEIXAR ASSIM MSM
     public function getPriceAttribute()
     {
@@ -19,4 +21,34 @@ class Product extends Model
         'manufacturing_date' => 'datetime'
     ];
 
+
+    public function filterAll($request)
+    {
+        $products = Product::where('name', 'like', '%'. $request->get('keyword').'%')
+                    ->where('price', '>=', $request->get('price_from')?? 0)
+                    ->where('price', '<=', $request->get('price_to')?? 0);
+
+        switch($request->get('order_by')){
+
+            case 'newest':
+                $products =   $products->OrderBy('created_at', 'desc');
+                break;
+            case 'older':
+                $products =  $products->OrderBy('created_at', 'asc');
+
+                break;
+            case 'price_desc':
+                $products =  $products->OrderBy('price', 'desc');
+
+            case 'price_asc':
+                $products = $products->OrderBy('price', 'asc');
+                break;
+
+        }
+
+              $products = $products->paginate(10);
+
+
+        return $products;
+    }
 }

@@ -17,15 +17,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('product.index');
 });
 
         Route::get('/unidev', [EstudoController::class, 'index']);
-
         Route::get('/testes', [teste::class, 'teste']);
-
         Route::get('/mail', [MailController::class, 'mail']);
-
         Route::get('/user', [EstudoController::class, 'indUser']);
 
-        Route::get('/product', [ProductController::class, 'index']);
+
+    //    Route::get('product/search', [ProductController::class, 'search'])->name('product.search'); NAO EXISTE MAIS
+
+        Route::resource('product', ProductController::class);
+
+
+       // Route::prefix('/product')->group(function(){
+
+            // Route::get('/', [ProductController::class, 'index'])->name('product.index');
+            // Route::get('/search', [ProductController::class, 'search'])->name('product.search');
+            // Route::get('/create', [ProductController::class, 'create'])->name('product.create');
+            // Route::post('/store', [ProductController::class, 'store'])->name('product.store');
+
+        // });
+
+
+

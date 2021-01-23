@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->decimal('price', 8, 2); //nome, casa decimal e quantas casa apos a virgula
+            $table->decimal('price', 8,2); //nome, casa decimal e quantas casa apos a virgula
             $table->string('provider', 50)->nullable();
             $table->date('expiration_date');
             $table->date('manufacturing_date');

@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <base href="{{URL::to('/')}}">
     <title>Gabriel Produtos</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+
 
 </head>
 <body>
@@ -18,9 +22,9 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link"href="/product">Produtos</a>
+              <a class="nav-link"href="{{route('product.index')}}">Produtos</a>
               <a class="nav-link" href="/user">Usuários</a>
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              <a class="nav-link disabled" href="" tabindex="-1" aria-disabled="true">Disabled</a>
             </div>
           </div>
         </div>
@@ -30,9 +34,18 @@
             <div class="row mt-5">
                 <div class="col-md">
 
-                    @yield('main')
+                    @yield('main'){{-- ESTAREI colocando outro blade aqui --}}
+
                 </div>
             </div>
         </div>
+        {{-- CODIGOS JAVASCRIPT --}}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script>
+                const order_by = document.querySelector('#order_by'); //FAZ RECEBER O objeto que tem o id oder_by
+
+              order_by.value = "{{request()->get('order_by')}}";
+
+        </script>
 </body>
 </html>

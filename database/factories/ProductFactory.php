@@ -24,7 +24,7 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->word,
             'price' => $this->faker->numberBetween(2,200),
-            'provider' => $this->faker->company,
+            'provider' => $this->faker->company(),
             'expiration_date'=> $this->faker->dateTimeBetween('now', '+90 days'),
             'manufacturing_date'=> $this->faker->dateTimeBetween('-90 days', 'now')
         ];

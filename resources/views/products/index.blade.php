@@ -1,9 +1,16 @@
 @extends('layout.template')
 @section('main')
-    <h1>Listagem de produtos</h1>
+@include('products.partials.search')
+    <div class="row">
+        <div class="col-md d-flex justify-content-between align-items-center">
+            <h1>Listagem de produtos</h1>
+            <a href="{{route('product.create')}}" class="btn btn-success">Cadastrar novo</a>
+        </div>
+    </div>
 
-
+    <div class="table-responsive">
     <table class="table table-striped mt-5">
+
         <thead>
             <tr>
             <th scope="col">ID</th>
@@ -14,7 +21,8 @@
             <th scope="col">Fabricação</th>
             <th scope="col"></th>
             </tr>
-  </thead>
+
+        </thead>
   <tbody>
       @foreach($products as $product)
     <tr>
@@ -28,10 +36,18 @@
     @endforeach
         </tbody>
       </table>
+    </div>
 
       <div class="mt-5">
 
-            {{ $products->links() }}
+            {{ $products->appends([
+                'keyword'=> request()->get('keyword'),
+                'price_from'=> request()->get('price_from'),
+                'price_to'=> request()->get('price_to'),
+                'order_by'=> request()->get('order_by'),
+
+
+                ])->links() }}
       </div>
 
 @endsection
