@@ -22,9 +22,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link"href="{{route('product.index')}}">Produtos</a>
-              <a class="nav-link" href="/user">Usuários</a>
-              <a class="nav-link disabled" href="" tabindex="-1" aria-disabled="true">Disabled</a>
+              <a class="nav-link {{ (request()->segment(1) === 'product') ? 'active' : '' }}" href="{{route('product.index')}}">Produtos</a>
+              <a class="nav-link {{ (request()->segment(1) === 'user') ? 'active' : '' }}" href="/user">Usuários</a>
             </div>
           </div>
         </div>
