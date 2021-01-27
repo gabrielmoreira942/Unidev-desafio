@@ -44,6 +44,14 @@ class Product extends Model
                 $products = $products->OrderBy('price', 'asc');
                 break;
 
+            case 'ID_asc':
+                $products = $products->OrderBy('id', 'asc');
+                break;
+
+             case 'ID_desc':
+                    $products = $products->OrderBy('id', 'desc');
+                 break;
+
         }
 
               $products = $products->paginate(10);

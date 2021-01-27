@@ -25,6 +25,9 @@
                             <option value="older">Mais antigos</option>
                             <option value="price_desc">Maior preço</option>
                             <option value="price_asc">Menor preço</option>
+                            <option value="ID_asc">ID Crescente</option>
+                            <option value="ID_desc">ID Decrescente</option>
+
                         </select>
                     </div>
                     <div class="col-md-3">

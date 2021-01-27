@@ -62,16 +62,34 @@ class ProductController extends Controller
 
 
 
-    public function edit(Product $product)
+    public function edit(Request $request, Product $product)
     {
-        //
+        //obs: n precisa disso, a função /\ ja pega
+        // $id = $request->segment(2);
+
+        // $product = Product::find($id);
+        return view('products.edit', compact('product'));
     }
 
 
 
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        try {
+        $data = $request->all();
+        $product->update($data);
+
+        $request->session()->flash('success', 'Registro atualizado com sucesso!');
+
+        } catch(\Exception $e) {
+            $request->session()->flash('error', 'Ocorreu um erro ao atualizar esses dados!');            //$e->getMessage()); //pegar o erro
+          // echo 'Ocorreu um erro: '. $e->getMessage();
+        }
+
+    //    $data = $request->all(); // PEGA TODAS AS REQUISIÇÕES
+    //    $product->update($data); //armazena no banco Product e atualiza
+
+       return redirect()->back();
     }
 
 
