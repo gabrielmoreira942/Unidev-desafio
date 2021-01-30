@@ -13,10 +13,10 @@ class ProductController extends Controller
     {
                 $product = new Product;
 
-                if($request->has('action') && $request->get('action')==='search'){
+                if($request->has('action') && $request->get('action') === 'search'){
                     $products = $product->filterAll($request);
 
-                }else{
+                }else {
                     $products = $product->OrderBy('name', 'asc')->paginate(20);
 
                 }
@@ -93,8 +93,19 @@ class ProductController extends Controller
     }
 
 
-    public function destroy(Product $product)
+    public function destroy(Request $request, Product $product)
     {
-        //
+        try {
+            $product->delete();
+
+
+            $request->session()->flash('success', 'Registro excluído com sucesso!');
+
+            } catch(\Exception $e) {
+                $request->session()->flash('error', 'Ocorreu um erro ao tentar excluir esses dados!');            //$e->getMessage()); //pegar o erro
+              // echo 'Ocorreu um erro: '. $e->getMessage();
+            }
+
+        return redirect()->back();
     }
 }

@@ -40,6 +40,12 @@
             </div>
         </div>
         {{-- CODIGOS JAVASCRIPT --}}
+        <form id="delete_form" action="" method="post">
+            @csrf
+            @method('delete')
+
+                                                            {{-- ESSE FORM DELETE VAI VINCULAR COM O JavaScript \/\/\/ la embaixo --}}
+        </form>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         <script>
                 const order_by = document.querySelector('#order_by'); //FAZ RECEBER O objeto que tem o id order_by
@@ -52,6 +58,18 @@
 
               if(provider)
               provider.value = "{{$product->provider ?? ''}}";
+
+            function deleteInDatabase(path, id){ //modo de deletar arquivo
+
+                if(confirm('Você tem certeza que deseja remover este registro?')){
+
+                const deleteForm = document.querySelector('#delete_form');
+                deleteForm.action = path;
+                deleteForm.submit();
+                }
+                    //fui no index e no botão de excluir fiz um onclick
+            }
+
 
         </script>
 </body>

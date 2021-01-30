@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class="col-md mb-5">
 
@@ -35,7 +34,7 @@
                     <div class="col-md-3">
                         <input type="hidden" name="action" value="search">
                         <button type="submit" class="btn btn-primary">Filtrar</button>
-                        <a class="btn btn-warning" href="{{route('product.index')}}">Limpar</a>
+                        <a class="btn btn-warning" href="{{route('user.index')}}">Limpar</a>
                     </div>
                 </form>
 
@@ -43,5 +42,3 @@
         </div>
     </div>
 </div>
-
-

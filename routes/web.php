@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\EstudoController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\teste;
@@ -17,18 +17,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('product.index');
+
+    return redirect()->route('user.index');
 });
 
-        Route::get('/unidev', [EstudoController::class, 'index']);
-        Route::get('/testes', [teste::class, 'teste']);
+        Route::get('/unidev', [UserController::class, 'index']);
         Route::get('/mail', [MailController::class, 'mail']);
-        Route::get('/user', [EstudoController::class, 'indUser']);
-
+        Route::resource('user', UserController::class);
+        Route::resource('product', ProductController::class);           
 
     //    Route::get('product/search', [ProductController::class, 'search'])->name('product.search'); NAO EXISTE MAIS
 
-        Route::resource('product', ProductController::class);
+
+    //    Route::get('product/{product}', [ProductController::class, 'destroy']);
 
 
        // Route::prefix('/product')->group(function(){

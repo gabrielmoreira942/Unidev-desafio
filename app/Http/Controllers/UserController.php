@@ -5,9 +5,18 @@ use App\Models\User;
 use App\Mail\DispMail;
 use Illuminate\Http\Request;
 
-class EstudoController extends Controller
+class UserController extends Controller
 {
+
+
+
     public function index()
+    {
+        return view('users.index');
+    }
+
+    
+    public function user()
     {
 
 
@@ -21,11 +30,7 @@ class EstudoController extends Controller
             // $user->save();
              $users = User::all();
 
-         return view('Estudos', compact('users'));
+         return view('users.user', compact('users'));
     }
 
-    public function indUser()
-    {
-        return view('users.index');
-    }
 }

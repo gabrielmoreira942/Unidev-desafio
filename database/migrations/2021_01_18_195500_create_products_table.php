@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('provider', 50)->nullable();
             $table->date('expiration_date');
             $table->date('manufacturing_date');
+         //   $table->string('confirm_password', 20);
             $table->timestamps();
         });
     }
