@@ -1,6 +1,7 @@
 @extends('layout.template')
 @section('main')
 @include('products.partials.search')
+
     <div class="row">
         <div class="col-md d-flex justify-content-between align-items-center">
             <h1>Listagem de produtos</h1>
@@ -55,5 +56,6 @@
 
                 ])->links() }}
       </div>
+
 
 @endsection

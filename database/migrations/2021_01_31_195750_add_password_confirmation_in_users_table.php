@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPasswordAndConfirmInUsersTable extends Migration
+class AddPasswordConfirmationInUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,9 @@ class AddPasswordAndConfirmInUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-          //  $table->string('password', 20);
-            $table->string('confirm_password');
+
+            $table->string('password_confirmation')->nullable()->default(null);
+
         });
     }
 
@@ -26,9 +27,9 @@ class AddPasswordAndConfirmInUsersTable extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+                        $table->dropColumn('password_confirmation');
 
-            Schema::dropIfExists('users');
-
-
+        });
     }
 }

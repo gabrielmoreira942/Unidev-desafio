@@ -12,7 +12,7 @@ class Product extends Model
     protected $fillable = ['name', 'provider', 'price', 'manufacturing_date', 'expiration_date'];
 
     //tem como fazer como getPriceFormatedAtrribute, e la na view mudar pra price_formated MAS VOU DEIXAR ASSIM MSM
-    public function getPriceAttribute()
+    public function getPriceAttribute()   //pega a variavel/atributo, incrivel né
     {
         return 'R$ ' .number_format($this->attributes['price'],2,',','.');
     }
